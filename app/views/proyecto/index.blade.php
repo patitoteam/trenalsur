@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th class="col-md-6">Nombre Proyecto</th>
-          <th class="col-md-2">Institución</th>
+          <th class="col-md-2">Gastos</th>
           <th class="col-md-2">Editar</th>
           <th class="col-md-2">Borrar</th>
         </tr>
@@ -16,11 +16,7 @@
         @foreach($list as $item)
           <tr>
             <td>{{$item->nombre}}</td>
-            @if ($item->institucion_id)
-            <td>{{$item->institucion()->first()->nombre}}</td>
-            @else
-            <td>Sin Institución</td>
-            @endif
+            <td>{{$item->gastos}}</td>
             <td><a href="{{url("proyecto/$item->id/edit")}}" title=""><i class="fa fa-edit fa-2x"></i></a></td>
             <td><a href="{{url("proyecto/$item->id/delete")}}" title=""><i class="fa fa-minus-square-o fa-2x"></i></a></td>
           </tr>
