@@ -4,14 +4,14 @@
 	<div class='col-md-4 col-md-offset-4'>
 		<div class='form-group'>
 			{{Form::open(['url'=>'user/login'])}}
-			<b>{{Form::label('email', 'Email:')}}</b>
+			<b>{{Form::label('email', 'Email')}}</b>
 			{{Form::text('email', '', [
         		'placeholder'=>'email',
         		'class'=>'form-control'
   		])}}
-    	<b>{{Form::label('password', 'Password:')}}</b>
+    	<b>{{Form::label('password', 'Password')}}</b>
     		{{Form::password('password', [
-        		'placeholder'=>'Your Password',
+        		'placeholder'=>'password',
         		'class'=>'form-control'
     		])}}
   		<br />
