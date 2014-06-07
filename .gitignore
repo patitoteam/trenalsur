@@ -1,3 +1,7 @@
+# Scrapy folder hidden
+/collector
+/env
+
 # Laravel
 /bootstrap/compiled.php
 /vendor
