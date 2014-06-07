@@ -1,4 +1,8 @@
 <?php
+Route::get('/', [
+    'uses'=>'HomeController@index'
+]);
+
 
 Route::get('institucion', [
     'uses'=>'InstitucionController@index'
