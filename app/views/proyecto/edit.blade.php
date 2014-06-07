@@ -27,6 +27,12 @@
         'class'=>'form-control',
         'autocomplete'=>'off'
       ])}}
+      <b>{{Form::label('gastos', 'Gastos:')}}</b>
+      {{Form::text('gastos', $model->gastos, [
+        'placeholder'=>'Gastos',
+        'class'=>'form-control',
+        'autocomplete'=>'off'
+      ])}}
       <b>{{Form::label('descripcion', 'Descripción:')}}</b>
       {{Form::textarea('descripcion', $model->descripcion, [
         'class'=>'form-control',

@@ -23,6 +23,7 @@ class TablasBase extends Migration {
 			$t->string('tipo')->default('EJ'); // EJ, PL, PR
 			$t->float('lat')->default(0);
 			$t->float('long')->default(0);
+			$t->float('gastos')->default(0);
 			$t->string('descripcion')->nullable();
 			$t->integer('contador')->default(0);
 			$t->integer('institucion_id')->unsigned()->nullable();
