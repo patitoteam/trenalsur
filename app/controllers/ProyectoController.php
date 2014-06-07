@@ -8,6 +8,7 @@ class ProyectoController extends BaseController {
 
     public function create() {
         $model = new Proyecto();
+        $model->gastos = 0;
         return View::make('proyecto.edit')
             ->with('method', 'post')
             ->with('model', $model);
@@ -17,6 +18,9 @@ class ProyectoController extends BaseController {
         $model = new Proyecto();
         $model->nombre = Input::get('nombre');
         $model->descripcion = Input::get('descripcion');
+        $model->lat = Input::get('lat');
+        $model->long = Input::get('long');
+        $model->gastos = Input::get('gastos');
         $model->save();
 
         return Redirect::to("proyecto/$model->id/edit")
@@ -37,6 +41,9 @@ class ProyectoController extends BaseController {
         $model = Proyecto::findOrFail($id);
         $model->nombre = Input::get('nombre');
         $model->descripcion = Input::get('descripcion');
+        $model->lat = Input::get('lat');
+        $model->long = Input::get('long');
+        $model->gastos = Input::get('gastos');
         $model->save();
 
 

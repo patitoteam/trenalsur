@@ -1,9 +1,22 @@
 @extends('master')
 
 @section('content')
+<<<<<<< HEAD
 <div id="map"></div>
+=======
+<h1>Pagina inicial</h1>
+<div class="row">
+  <div class="col-md-8">
+    <div id="map"></div>
+  </div>
+  <div class="col-md-4">
+    <h1>Information</h1>
+    <div id="info"></div>
+  </div>
+</div>
 
-<div id="info"></div>
+>>>>>>> 9ee3785da7ece90117fc3fc1fc433c8498a0b426
+
 @stop
 
 @section('scripts')
@@ -25,8 +38,12 @@ body + div {
 }
    #map {
   width: 100%;
+<<<<<<< HEAD
   height: 600px;
   /*height: 100%;*/
+=======
+  height: 400px;
+>>>>>>> 9ee3785da7ece90117fc3fc1fc433c8498a0b426
   margin: 0;
   padding: 0;
 }

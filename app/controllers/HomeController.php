@@ -4,11 +4,15 @@ class HomeController extends BaseController {
         return View::make('home.index');
     }
 
+    public function otro() {
+        return View::make('home.otro');
+    }
+
     public function login() {
     	if (Auth::check()) {
     		return Redirect::to("/");
     	} else {
-    		return View::make('home.login');	
+    		return View::make('home.login');
     	}
     }
 
