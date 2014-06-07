@@ -2,11 +2,12 @@
 @section('content')
 <div class="row">
   <div class="col-md-8 col-md-offset-2 institucion"><br>
-    <a href="{{url("institucion/create")}}" class="btn btn-primary">Nueva Institucion</a>
+    <a href="{{url("proyecto/create")}}" class="btn btn-primary">Nuevo Proyecto</a>
     <table class="table table-striped ">
       <thead>
         <tr>
-          <th class="col-md-8">Nombre Institucion</th>
+          <th class="col-md-6">Nombre Proyecto</th>
+          <th class="col-md-2">Institución</th>
           <th class="col-md-2">Editar</th>
           <th class="col-md-2">Borrar</th>
         </tr>
@@ -15,8 +16,13 @@
         @foreach($list as $item)
           <tr>
             <td>{{$item->nombre}}</td>
-            <td><a href="{{url("institucion/$item->id/edit")}}" title="">Edit</a></td>
-            <td><a href="{{url("institucion/$item->id/delete")}}" title="">Delete</a></td>
+            @if ($item->institucion_id)
+            <td>{{$item->institucion()->first()->nombre}}</td>
+            @else
+            <td>Sin Institución</td>
+            @endif
+            <td><a href="{{url("proyecto/$item->id/edit")}}" title="">Edit</a></td>
+            <td><a href="{{url("proyecto/$item->id/delete")}}" title="">Delete</a></td>
           </tr>
         @endforeach
       </tbody>

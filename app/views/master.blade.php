@@ -69,6 +69,12 @@
   <strong>Success!</strong> {{Session::get('message')}}.
 </div>
 @endif
+@if(Session::has('error'))
+<div class="alert alert-error alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Error!</strong> {{Session::get('error')}}.
+</div>
+@endif
 @yield('content')
 
 <script src="{{asset('js/jquery.min.js')}}"></script>

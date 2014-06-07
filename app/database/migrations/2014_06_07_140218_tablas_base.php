@@ -20,9 +20,11 @@ class TablasBase extends Migration {
 		Schema::create('proyectos', function($t) {
 			$t->increments('id');
 			$t->string('nombre');
-			$t->string('tipo'); // EJ, PL, PR
-			$t->float('lat');
-			$t->float('long');
+			$t->string('tipo')->default('EJ'); // EJ, PL, PR
+			$t->float('lat')->default(0);
+			$t->float('long')->default(0);
+			$t->string('descripcion')->nullable();
+			$t->integer('contador')->default(0);
 			$t->integer('institucion_id')->unsigned()->nullable();
 			$t->foreign('institucion_id')
 				->references('id')
@@ -58,6 +60,7 @@ class TablasBase extends Migration {
 			$t->string('name');
 			$t->string('email');
 			$t->string('password');
+			$t->string('remember_token');
 			$t->timestamps();
 		});
 		Schema::create('proyecto_admin', function($t) {
