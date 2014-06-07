@@ -91,21 +91,31 @@ Route::post('user/login', 'UserController@postLogin');
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
 
-//:: Application Routes ::
 
-# Filter for detect language
-Route::when('contact-us','detectLang');
+Route::get('institucion', [
+    'uses'=>'InstitucionController@index'
+]);
 
-# Contact Us Static Page
-Route::get('contact-us', function()
-{
-    // Return about us page
-    return View::make('site/contact-us');
-});
+Route::get('institucion/{id}/edit', [
+    'uses'=>'InstitucionController@edit'
+]);
+Route::get('institucion/create', [
+    'uses'=>'InstitucionController@create'
+]);
+Route::get('institucion/{id}/delete', [
+    'uses'=>'InstitucionController@doDelete'
+]);
 
-# Posts - Second to last set, match slug
-Route::get('{postSlug}', 'BlogController@getView');
-Route::post('{postSlug}', 'BlogController@postView');
+
+Route::post('institucion/{id}/edit', [
+    'uses'=>'InstitucionController@doEdit'
+]);
+Route::post('institucion/create', [
+    'uses'=>'InstitucionController@doCreate'
+]);
+
 
 # Index Page - Last route, no matches
 Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getIndex'));
+
+
