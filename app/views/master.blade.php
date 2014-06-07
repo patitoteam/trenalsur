@@ -62,7 +62,9 @@
   <strong>Error!</strong> {{Session::get('error')}}.
 </div>
 @endif
+<div style="margin: 16px">
 @yield('content')
+</div>
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>

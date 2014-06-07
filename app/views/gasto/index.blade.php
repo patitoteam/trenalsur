@@ -23,8 +23,8 @@
             <td>Sin PRoyecto</td>
             @endif
             <td>{{$item->total}}</td>
-            <td><a href="{{url("gasto/$item->id/edit")}}" title="">Edit</a></td>
-            <td><a href="{{url("gasto/$item->id/delete")}}" title="">Delete</a></td>
+            <td><a href="{{url("gasto/$item->id/edit")}}" title=""><i class="fa fa-edit fa-2x"></i></a></td>
+            <td><a href="{{url("gasto/$item->id/delete")}}" title=""><i class="fa fa-minus-square-o fa-2x"></i></a></td>
           </tr>
         @endforeach
       </tbody>

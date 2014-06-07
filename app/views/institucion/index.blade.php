@@ -15,8 +15,8 @@
         @foreach($list as $item)
           <tr>
             <td>{{$item->nombre}}</td>
-            <td><a href="{{url("institucion/$item->id/edit")}}" title="">Edit</a></td>
-            <td><a href="{{url("institucion/$item->id/delete")}}" title="">Delete</a></td>
+            <td><a href="{{url("institucion/$item->id/edit")}}" title=""><i class="fa fa-edit fa-2x"></i></a></td>
+            <td><a href="{{url("institucion/$item->id/delete")}}" title=""><i class="fa fa-minus-square-o fa-2x"></i></a></td>
           </tr>
         @endforeach
       </tbody>
