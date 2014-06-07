@@ -15,6 +15,7 @@ class TablasBase extends Migration {
 		Schema::create('instituciones', function($t) {
 			$t->increments('id');
 			$t->string('nombre');
+			$t->timestamps();
 		});
 		Schema::create('presupuestos', function($t) {
 			$t->increments('id');
@@ -24,6 +25,7 @@ class TablasBase extends Migration {
 			$t->foreign('institucion_id')
 				->references('id')
 				->on('instituciones')->onDelete('cascade');
+			$t->timestamps();
 		});
 		Schema::create('gastos', function($t) {
 			$t->increments('id');
@@ -33,6 +35,7 @@ class TablasBase extends Migration {
 			$t->foreign('presupuesto_id')
 				->references('id')
 				->on('presupuestos')->onDelete('cascade');
+			$t->timestamps();
 		});
 	}
 
