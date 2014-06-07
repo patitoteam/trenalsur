@@ -48,6 +48,8 @@ Route::get('proyecto/likes/{proyectoId}', ['uses'=>'SocialController@likes']);
 Route::get('proyecto/dislikes/{proyectoId}', ['uses'=>'SocialController@dislikes']);
 Route::get('proyecto/comments/{proyectoId}', ['uses'=>'SocialController@comments']);
 
+Route::get('api/proyectos', ['uses'=>'ProyectoController@proyectos']);
+
 Route::Get('social', ['uses'=>'SocialController@index']);
 
 

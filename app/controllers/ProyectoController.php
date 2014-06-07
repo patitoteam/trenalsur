@@ -14,6 +14,12 @@ class ProyectoController extends BaseController {
             ->with('model', $model);
     }
 
+    public function proyectos() {
+        $res = Proyecto::all();
+
+        return $res;
+    }
+
     public function doCreate() {
         $model = new Proyecto();
         $model->nombre = Input::get('nombre');

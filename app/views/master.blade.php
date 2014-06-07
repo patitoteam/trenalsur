@@ -26,13 +26,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-<<<<<<< HEAD
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <strong> Show me the money</strong>
         </a>
-=======
-      <a class="navbar-brand" href="/">Show me the money</a>
->>>>>>> 9ee3785da7ece90117fc3fc1fc433c8498a0b426
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
