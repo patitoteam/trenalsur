@@ -12,7 +12,8 @@
       <b>{{Form::label('nombre', 'Nombre:')}}</b>
       {{Form::text('nombre', $model->nombre, [
         'placeholder'=>'Nombre de proyecto',
-        'class'=>'form-control'
+        'class'=>'form-control',
+        'autocomplete'=>'off'
       ])}}
       <b>{{Form::label('descripcion', 'Descripción:')}}</b>
       {{Form::textarea('descripcion', $model->descripcion, [

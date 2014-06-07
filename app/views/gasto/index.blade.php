@@ -6,8 +6,9 @@
     <table class="table table-striped ">
       <thead>
         <tr>
-          <th class="col-md-6">Nombre Proyecto</th>
-          <th class="col-md-2">Institución</th>
+          <th class="col-md-6">Gasto</th>
+          <th class="col-md-3">PRoyecto</th>
+          <th class="col-md-2">Total</th>
           <th class="col-md-2">Editar</th>
           <th class="col-md-2">Borrar</th>
         </tr>
@@ -16,13 +17,14 @@
         @foreach($list as $item)
           <tr>
             <td>{{$item->nombre}}</td>
-            @if ($item->institucion_id)
-            <td>{{$item->institucion()->first()->nombre}}</td>
+            @if ($item->proyecto_id)
+            <td>{{$item->proyecto()->first()->nombre}}</td>
             @else
-            <td>Sin Institución</td>
+            <td>Sin PRoyecto</td>
             @endif
-            <td><a href="{{url("proyecto/$item->id/edit")}}" title="">Edit</a></td>
-            <td><a href="{{url("proyecto/$item->id/delete")}}" title="">Delete</a></td>
+            <td>{{$item->total}}</td>
+            <td><a href="{{url("gasto/$item->id/edit")}}" title="">Edit</a></td>
+            <td><a href="{{url("gasto/$item->id/delete")}}" title="">Delete</a></td>
           </tr>
         @endforeach
       </tbody>

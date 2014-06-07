@@ -37,3 +37,25 @@ Route::get('gasto/create', ['uses'=>'GastoController@create']);
 Route::get('gasto/{id}/delete', ['uses'=>'GastoController@doDelete']);
 Route::post('gasto/{id}/edit',['uses'=>'GastoController@doEdit']);
 Route::post('gasto/create', ['uses'=>'GastoController@doCreate']);
+
+Route::post('proyecto/like/{proyectoId}', ['uses'=>'SocialController@doLike']);
+Route::post('proyecto/dislike/{proyectoId}', ['uses'=>'SocialController@doDisLike']);
+Route::post('proyecto/comment/{proyectoId}', ['uses'=>'SocialController@doComment']);
+
+Route::get('proyecto/likes/{proyectoId}', ['uses'=>'SocialController@likes']);
+Route::get('proyecto/dislikes/{proyectoId}', ['uses'=>'SocialController@dislikes']);
+Route::get('proyecto/comments/{proyectoId}', ['uses'=>'SocialController@comments']);
+
+Route::Get('social', ['uses'=>'SocialController@index']);
+
+
+
+View::composer('gasto.edit', function($view) {
+    $list = Proyecto::all();
+    if (count($list) > 0) {
+        $options = array_combine($list->lists('id'), $list->lists('nombre'));
+    } else {
+        $options = array(null, 'No hay proyectos');
+    }
+    $view->with('proyectos', $options);
+});

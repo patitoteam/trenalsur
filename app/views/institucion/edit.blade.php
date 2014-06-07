@@ -12,7 +12,8 @@
       <b>{{Form::label('nombre', 'Nombre:')}}</b>
       {{Form::text('nombre', $model->nombre, [
         'placeholder'=>'Nombre de institucion',
-        'class'=>'form-control'
+        'class'=>'form-control',
+        'autocomplete'=>'off'
       ])}}
       <br>
       {{Form::submit('Guardar Cambios', [
