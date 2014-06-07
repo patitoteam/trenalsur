@@ -7,7 +7,11 @@
   </div>
   <div class="col-md-4">
     <!-- <h1>Information</h1> -->
-    <div id="info"></div>
+    <div id="info">
+      <a href="#">
+        <img src="{{asset("img/like.png")}}" style="width: 130px; height:50px;">
+      </a>
+    </div>
   </div>
 </div>
 @stop
