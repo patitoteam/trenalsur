@@ -4,6 +4,7 @@ Route::get('/', [
 ]);
 
 Route::get('presupuestos', ['uses'=>'HomeController@otro']);
+Route::get('general', ['uses'=>'HomeController@general']);
 
 
 Route::get('institucion', [

@@ -8,6 +8,10 @@ class HomeController extends BaseController {
         return View::make('home.otro');
     }
 
+    public function general() {
+        return View::make('home.general');
+    }
+
     public function login() {
     	if (Auth::check()) {
     		return Redirect::to("/");
