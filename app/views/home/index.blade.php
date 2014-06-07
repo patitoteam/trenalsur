@@ -6,7 +6,7 @@
     <div id="map"></div>
   </div>
   <div class="col-md-4">
-    <h1>Information</h1>
+    <!-- <h1>Information</h1> -->
     <div id="info"></div>
   </div>
 </div>
