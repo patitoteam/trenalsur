@@ -15,7 +15,7 @@ class ProyectoController extends BaseController {
     }
 
     public function proyectos() {
-        $res = Proyecto::all();
+        $res = Proyecto::select(['gastos'])->get();
 
         return $res;
     }
