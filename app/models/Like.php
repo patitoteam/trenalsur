@@ -1,5 +1,5 @@
 <?php
-class Comment extends Eloquent {
+class Like extends Eloquent {
     public function proyecto() {
         return $this->belongsTo('Proyecto');
     }

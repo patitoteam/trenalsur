@@ -17,11 +17,13 @@ class TablasBase extends Migration {
 			$t->string('nombre');
 			$t->timestamps();
 		});
-		Schema::create('presupuestos', function($t) {
+		Schema::create('proyectos', function($t) {
 			$t->increments('id');
-			$t->string('programa');
-			$t->string('proyecto_actividad');
-			$t->integer('institucion_id')->unsigned();
+			$t->string('nombre');
+			$t->string('tipo'); // EJ, PL, PR
+			$t->float('lat');
+			$t->float('long');
+			$t->integer('institucion_id')->unsigned()->nullable();
 			$t->foreign('institucion_id')
 				->references('id')
 				->on('instituciones')->onDelete('cascade');
@@ -31,10 +33,37 @@ class TablasBase extends Migration {
 			$t->increments('id');
 			$t->string('nombre');
 			$t->integer('total');
-			$t->integer('presupuesto_id')->unsigned();
-			$t->foreign('presupuesto_id')
+			$t->integer('proyecto_id')->unsigned();
+			$t->foreign('proyecto_id')
 				->references('id')
-				->on('presupuestos')->onDelete('cascade');
+				->on('proyectos')->onDelete('cascade');
+			$t->timestamps();
+		});
+		Schema::create('likes', function($t) {
+			$t->increments('id');
+			$t->integer('user_id')->unsigned()->nullable();
+			$t->integer('proyecto_id');
+			$t->string('state');
+			$t->timestamps();
+		});
+		Schema::create('comments', function($t) {
+			$t->increments('id');
+			$t->string('content');
+			$t->integer('proyecto_id')->unsigned()->nullable();
+			$t->integer('user_id')->unsigned()->nullable();
+			$t->timestamps();
+		});
+		Schema::create('users', function($t) {
+			$t->increments('id');
+			$t->string('name');
+			$t->string('email');
+			$t->string('password');
+			$t->timestamps();
+		});
+		Schema::create('proyecto_admin', function($t) {
+			$t->increments('id');
+			$t->integer('user_id')->unsigned();
+			$t->integer('proyect_id')->unsigned();
 			$t->timestamps();
 		});
 	}

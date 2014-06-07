@@ -1,107 +1,103 @@
 <?php
 
-use Zizaco\Confide\ConfideUser;
-use Zizaco\Confide\Confide;
-use Zizaco\Confide\ConfideEloquentRepository;
-use Zizaco\Entrust\HasRole;
-use Carbon\Carbon;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends ConfideUser implements UserInterface, RemindableInterface{
-    use HasRole;
+class User extends Eloquent implements UserInterface, RemindableInterface {
+	public static $ROLE_COMMON = 'Profile.CommonRole';
+	public static $ROLE_ADMIN = 'Profile.AdminRole';
 
-    /**
-     * Get user by username
-     * @param $username
-     * @return mixed
-     */
-    public function getUserByUsername( $username )
-    {
-        return $this->where('username', '=', $username)->first();
-    }
+	public $fillable = ['name', 'email', 'country', 'website', 'bio', 'picture_url'];
+	public $guarded = ['password'];
 
-    /**
-     * Get the date the user was created.
-     *
-     * @return string
-     */
-    public function joined()
-    {
-        return String::date(Carbon::createFromFormat('Y-n-j G:i:s', $this->created_at));
-    }
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'users';
 
-    /**
-     * Save roles inputted from multiselect
-     * @param $inputRoles
-     */
-    public function saveRoles($inputRoles)
-    {
-        if(! empty($inputRoles)) {
-            $this->roles()->sync($inputRoles);
-        } else {
-            $this->roles()->detach();
-        }
-    }
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = array('password');
 
-    /**
-     * Returns user's current role ids only.
-     * @return array|bool
-     */
-    public function currentRoleIds()
-    {
-        $roles = $this->roles;
-        $roleIds = false;
-        if( !empty( $roles ) ) {
-            $roleIds = array();
-            foreach( $roles as &$role )
-            {
-                $roleIds[] = $role->id;
-            }
-        }
-        return $roleIds;
-    }
+	/**
+	 * Get the unique identifier for the user.
+	 *
+	 * @return mixed
+	 */
+	public function getAuthIdentifier()
+	{
+		return $this->getKey();
+	}
 
-    /**
-     * Redirect after auth.
-     * If ifValid is set to true it will redirect a logged in user.
-     * @param $redirect
-     * @param bool $ifValid
-     * @return mixed
-     */
-    public static function checkAuthAndRedirect($redirect, $ifValid=false)
-    {
-        // Get the user information
-        $user = Auth::user();
-        $redirectTo = false;
+	/**
+	 * Get the password for the user.
+	 *
+	 * @return string
+	 */
+	public function getAuthPassword()
+	{
+		return $this->password;
+	}
 
-        if(empty($user->id) && ! $ifValid) // Not logged in redirect, set session.
-        {
-            Session::put('loginRedirect', $redirect);
-            $redirectTo = Redirect::to('user/login')
-                ->with( 'notice', Lang::get('user/user.login_first') );
-        }
-        elseif(!empty($user->id) && $ifValid) // Valid user, we want to redirect.
-        {
-            $redirectTo = Redirect::to($redirect);
-        }
+	/**
+	 * Get the token value for the "remember me" session.
+	 *
+	 * @return string
+	 */
+	public function getRememberToken()
+	{
+		return $this->remember_token;
+	}
 
-        return array($user, $redirectTo);
-    }
+	/**
+	 * Set the token value for the "remember me" session.
+	 *
+	 * @param  string  $value
+	 * @return void
+	 */
+	public function setRememberToken($value)
+	{
+		$this->remember_token = $value;
+	}
 
-    public function currentUser()
-    {
-        return (new Confide(new ConfideEloquentRepository()))->user();
-    }
+	/**
+	 * Get the column name for the "remember me" token.
+	 *
+	 * @return string
+	 */
+	public function getRememberTokenName()
+	{
+		return 'remember_token';
+	}
 
-    /**
-     * Get the e-mail address where password reminders are sent.
-     *
-     * @return string
-     */
-    public function getReminderEmail()
-    {
-        return $this->email;
-    }
+	/**
+	 * Get the e-mail address where password reminders are sent.
+	 *
+	 * @return string
+	 */
+	public function getReminderEmail()
+	{
+		return $this->email;
+	}
+
+	public function proyectos() {
+		return $this->belongsToMany('Proyecto', 'proyecto_admin');
+	}
+
+
+	public static function getRules() {
+		$rules = array(
+			'email'=>'required|unique:users',
+			'name'=>'required',
+			'password'=>'required',
+			'confirm'=>'required|same:password'
+		);
+		return $rules;
+	}
 
 }
