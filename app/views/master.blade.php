@@ -35,7 +35,7 @@
       <ul class="nav navbar-nav navbar-right">
         @if (Auth::check())
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">scv@showmethemoney.com<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Auth::user()->email; ?><b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo e(URL::to('proyecto/create')); ?>">Crear proyecto</a></li>
               <li class="divider"></li>
@@ -44,7 +44,7 @@
         </li>
         @else
         <li><a href="<?php echo e(URL::to('user/login')); ?>">Login</a></li>
-        <li><a href="#">Register</a></li>
+        <li><a href="<?php echo e(URL::to('user/register')); ?>">Register</a></li>
         @endif
       </ul>
     </div><!-- /.navbar-collapse -->

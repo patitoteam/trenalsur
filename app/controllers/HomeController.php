@@ -5,7 +5,15 @@ class HomeController extends BaseController {
     }
 
     public function login() {
-    	return View::make('home.login');
+    	if (Auth::check()) {
+    		return Redirect::to("/");
+    	} else {
+    		return View::make('home.login');	
+    	}
+    }
+
+    public function register() {
+    	return View::make('home.register');
     }
 
     public function doLogin() {
@@ -14,9 +22,25 @@ class HomeController extends BaseController {
 		'password' => Input::get('password')))) {
             return Redirect::back()
                 ->withInput()
-                ->with('error', 'Invalid credentials');
+                ->with('error', 'Credenciales invalidas.');
         }
         return Redirect::back();
+    }
+
+    public function doRegister() {
+    	if (Input::get('password') != Input::get('passwordAgain')) {
+    		return Redirect::back()
+    			->withInput()
+    			->with('error', 'Los passwords no coinciden');
+    	} else {
+			$user = new User();
+			$user->name = Input::get('name');
+			$user->email = Input::get('email');
+			$user->password = Hash::make(Input::get('password'));
+			$user->save();
+        	return Redirect::to("/")
+            	->with('message', 'Usuario creado');
+    	}
     }
 
     public function doLogout() {
