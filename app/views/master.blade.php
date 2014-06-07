@@ -63,7 +63,12 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
+@if(Session::has('message'))
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Success!</strong> {{Session::get('message')}}.
+</div>
+@endif
 @yield('content')
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
