@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-<h1>Pagina inicial</h1>
 <div id="map"></div>
 
 <div id="info"></div>
@@ -15,11 +14,25 @@
 
 @section('styles')
 <style type="text/css" media="screen">
+body,html {
+  height: 100%;
+  position: relative;
+
+}
+
+body + div {
+  height: 100%;
+}
    #map {
-  width: 60%;
-  height: 300px;
+  width: 100%;
+  height: 600px;
+  /*height: 100%;*/
   margin: 0;
   padding: 0;
+}
+div {
+  margin: 0px;
+  padding: 0px;
 }
 
 .stations, .stations svg {

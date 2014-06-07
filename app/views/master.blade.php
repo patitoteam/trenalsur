@@ -7,6 +7,12 @@
 
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,700,600,800,300' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'Open Sans';
+    }
+  </style>
   @yield('styles', '')
 </head>
 <body>
@@ -20,7 +26,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Show me the money</a>
+      <a class="navbar-brand" href="#">
+        <strong> Show me the money</strong>
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -39,12 +47,14 @@
           <ul class="dropdown-menu">
             <li><a href="<?php echo e(URL::to('proyecto/create')); ?>">Crear proyecto</a></li>
               <li class="divider"></li>
-              <li><a href="<?php echo e(URL::to('user/logout')); ?>">Logout</a></li>
+              <li><a href="<?php echo e(URL::to('user/logout')); ?>">Cerrar Sesion</a></li>
           </ul>
         </li>
         @else
-        <li><a href="<?php echo e(URL::to('user/login')); ?>">Login</a></li>
-        <li><a href="<?php echo e(URL::to('user/register')); ?>">Register</a></li>
+        <li><a href="<?php echo e(URL::to('user/login')); ?>">
+          <i class="fa fa-sign-in"></i> Ingresar</a></li>
+        <li><a href="<?php echo e(URL::to('user/register')); ?>">
+          <i class="fa fa-user"></i> Registrar</a></li>
         @endif
       </ul>
     </div><!-- /.navbar-collapse -->
