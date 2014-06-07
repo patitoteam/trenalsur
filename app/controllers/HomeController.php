@@ -4,10 +4,14 @@ class HomeController extends BaseController {
         return View::make('home.index');
     }
 
+    public function login() {
+    	return View::make('home.login');
+    }
+
     public function doLogin() {
     	if (!Auth::attempt(array(
-		'email' => 'pepe@gmail.com',
-		'password' => '12345'))) {
+		'email' => Input::get('email'),
+		'password' => Input::get('password')))) {
             return Redirect::back()
                 ->withInput()
                 ->with('error', 'Invalid credentials');
