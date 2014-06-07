@@ -2,9 +2,17 @@
 
 @section('content')
 <h1>Pagina inicial</h1>
-<div id="map"></div>
+<div class="row">
+  <div class="col-md-8">
+    <div id="map"></div>
+  </div>
+  <div class="col-md-4">
+    <h1>Information</h1>
+    <div id="info"></div>
+  </div>
+</div>
 
-<div id="info"></div>
+
 @stop
 
 @section('scripts')
@@ -16,8 +24,8 @@
 @section('styles')
 <style type="text/css" media="screen">
    #map {
-  width: 60%;
-  height: 300px;
+  width: 100%;
+  height: 400px;
   margin: 0;
   padding: 0;
 }

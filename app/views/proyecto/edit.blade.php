@@ -15,6 +15,18 @@
         'class'=>'form-control',
         'autocomplete'=>'off'
       ])}}
+      <b>{{Form::label('lat', 'Latitud:')}}</b>
+      {{Form::text('lat', $model->lat, [
+        'placeholder'=>'Latitud',
+        'class'=>'form-control',
+        'autocomplete'=>'off'
+      ])}}
+      <b>{{Form::label('long', 'Longitud:')}}</b>
+      {{Form::text('long', $model->long, [
+        'placeholder'=>'Longitud',
+        'class'=>'form-control',
+        'autocomplete'=>'off'
+      ])}}
       <b>{{Form::label('descripcion', 'Descripción:')}}</b>
       {{Form::textarea('descripcion', $model->descripcion, [
         'class'=>'form-control',

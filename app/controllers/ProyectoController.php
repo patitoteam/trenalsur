@@ -17,6 +17,8 @@ class ProyectoController extends BaseController {
         $model = new Proyecto();
         $model->nombre = Input::get('nombre');
         $model->descripcion = Input::get('descripcion');
+        $model->lat = Input::get('lat');
+        $model->long = Input::get('long');
         $model->save();
 
         return Redirect::to("proyecto/$model->id/edit")
@@ -37,6 +39,8 @@ class ProyectoController extends BaseController {
         $model = Proyecto::findOrFail($id);
         $model->nombre = Input::get('nombre');
         $model->descripcion = Input::get('descripcion');
+        $model->lat = Input::get('lat');
+        $model->long = Input::get('long');
         $model->save();
 
 

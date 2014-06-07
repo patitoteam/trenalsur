@@ -3,6 +3,8 @@ Route::get('/', [
     'uses'=>'HomeController@index'
 ]);
 
+Route::get('presupuestos', ['uses'=>'HomeController@otro']);
+
 
 Route::get('institucion', [
     'uses'=>'InstitucionController@index'
