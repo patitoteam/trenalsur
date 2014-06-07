@@ -23,3 +23,7 @@ vagrant
 
 # Packages
 _ide_helpers.php
+
+*.sublime*
+
+/app/config/database.php
