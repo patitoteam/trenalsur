@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-<div id="map"></div>
 <div class="row">
   <div class="col-md-8">
     <div id="map"></div>
