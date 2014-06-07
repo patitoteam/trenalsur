@@ -17,6 +17,7 @@ class GastoController extends BaseController {
         $model = new Gasto();
         $model->nombre = Input::get('nombre');
         $model->total = Input::get('total');
+        $model->proyecto_id = Input::get('proyecto_id');
         $model->save();
 
         return Redirect::to("gasto/$model->id/edit")
